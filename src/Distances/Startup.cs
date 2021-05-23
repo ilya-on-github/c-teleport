@@ -1,10 +1,12 @@
 using Distances.Filters;
-using Distances.Infrastructure.CTeleport;
+using Distances.Infrastructure.Impl;
+using Distances.Infrastructure.Impl.CTeleport;
 using Distances.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RestSharp;
 
 namespace Distances
 {
@@ -19,7 +21,11 @@ namespace Distances
                 .AddNewtonsoftJson()
                 .AddControllersAsServices();
 
-            services.AddScoped<IDistanceService, DistanceService>();
+            services.AddSingleton<ILocationDistanceService, LocationDistanceService>();
+            services.AddSingleton<IAirportDistanceService, AirportDistanceService>();
+            services.AddSingleton<ICTeleportClient>(
+                new CTeleportClient(
+                    new RestClient("https://places-dev.cteleport.com")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

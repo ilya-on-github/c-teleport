@@ -11,9 +11,9 @@ namespace Distances.Controllers
     [Route("api/v1/distance")]
     public class DistanceController : ControllerBase
     {
-        private readonly IDistanceService _distanceService;
+        private readonly IAirportDistanceService _distanceService;
 
-        public DistanceController(IDistanceService distanceService)
+        public DistanceController(IAirportDistanceService distanceService)
         {
             _distanceService = distanceService ?? throw new ArgumentNullException(nameof(distanceService));
         }
@@ -25,7 +25,8 @@ namespace Distances.Controllers
 
             return Ok(new ApiDistance
             {
-                Miles = distance.Miles
+                Miles = distance.Miles,
+                Meters = distance.Meters
             });
         }
     }

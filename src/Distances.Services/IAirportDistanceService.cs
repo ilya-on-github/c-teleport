@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Distances.Services
 {
-    public interface IDistanceService
+    public interface IAirportDistanceService
     {
         Task<Distance> GetDistance(AirportId one, AirportId two, CancellationToken ct = default);
     }
