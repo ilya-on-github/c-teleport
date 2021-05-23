@@ -2,6 +2,7 @@ using Distances.Filters;
 using Distances.Infrastructure.Impl;
 using Distances.Infrastructure.Impl.Caching;
 using Distances.Infrastructure.Impl.CTeleport;
+using Distances.Infrastructure.Impl.CTeleport.Caching;
 using Distances.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,14 +28,20 @@ namespace Distances
             services.AddSingleton<ILocationDistanceService, LocationDistanceService>();
 
             services.AddSingleton<AirportDistanceService>();
-            services.AddSingleton<ICTeleportClient>(
+            services.AddSingleton(
                 new CTeleportClient(
                     new RestClient("https://places-dev.cteleport.com")));
 
+            services.AddSingleton<ICTeleportClient>(provider =>
+                new CachingCTeleportClient(
+                    provider.GetRequiredService<CTeleportClient>(), provider.GetRequiredService<IMemoryCache>(),
+                    provider.GetRequiredService<IOptions<CachingCTeleportClientOption>>()));
+
             services.AddMemoryCache();
-            services.AddSingleton<IAirportDistanceService>(provider => new CachingAirportDistanceService(
-                provider.GetRequiredService<AirportDistanceService>(), provider.GetRequiredService<IMemoryCache>(),
-                provider.GetRequiredService<IOptions<CachingAirportDistanceServiceOptions>>()));
+            services.AddSingleton<IAirportDistanceService>(provider =>
+                new CachingAirportDistanceService(
+                    provider.GetRequiredService<AirportDistanceService>(), provider.GetRequiredService<IMemoryCache>(),
+                    provider.GetRequiredService<IOptions<CachingAirportDistanceServiceOptions>>()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
