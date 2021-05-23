@@ -1,3 +1,5 @@
+using System;
+
 namespace Distances.Services
 {
     public class AirportId
@@ -6,6 +8,9 @@ namespace Distances.Services
 
         public AirportId(string iataCode)
         {
+            if (string.IsNullOrWhiteSpace(iataCode))
+                throw new ArgumentException("IATA code can't be empty.", nameof(iataCode));
+
             IataCode = iataCode;
         }
 
