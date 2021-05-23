@@ -7,7 +7,7 @@ namespace Distances.Filters
     {
         public void OnException(ExceptionContext context)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(null, context.Exception);
         }
     }
 }
