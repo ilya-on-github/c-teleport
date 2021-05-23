@@ -19,7 +19,7 @@ namespace Distances.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetDistanceApiRequest r, CancellationToken ct)
+        public async Task<IActionResult> Get([FromQuery] GetDistanceApiRequest r, CancellationToken ct = default)
         {
             var distance = await _distanceService.GetDistance(new AirportId(r.A), new AirportId(r.B), ct);
 
