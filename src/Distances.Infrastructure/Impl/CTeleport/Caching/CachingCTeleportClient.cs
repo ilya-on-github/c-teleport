@@ -38,9 +38,4 @@ namespace Distances.Infrastructure.Impl.CTeleport.Caching
 
         private static string GetCacheKey(string iataCode) => iataCode;
     }
-
-    public class CachingCTeleportClientOption
-    {
-        public TimeSpan SlidingExpiration { get; set; } = TimeSpan.FromMinutes(1);
-    }
 }

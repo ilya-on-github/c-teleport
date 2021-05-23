@@ -46,9 +46,4 @@ namespace Distances.Infrastructure.Impl.Caching
             return string.Join("-", ordered);
         }
     }
-
-    public class CachingAirportDistanceServiceOptions
-    {
-        public TimeSpan SlidingExpiration { get; set; } = TimeSpan.FromMinutes(1);
-    }
 }
