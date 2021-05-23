@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Distances.Services", "Dista
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Distances.Infrastructure", "Distances.Infrastructure\Distances.Infrastructure.csproj", "{057BFBD8-DB26-4382-A0BE-A58727386260}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Distances.Tests", "Distances.Tests\Distances.Tests.csproj", "{A848D027-FC83-4D9D-A3D4-12C0CA9175BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{057BFBD8-DB26-4382-A0BE-A58727386260}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{057BFBD8-DB26-4382-A0BE-A58727386260}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{057BFBD8-DB26-4382-A0BE-A58727386260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A848D027-FC83-4D9D-A3D4-12C0CA9175BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A848D027-FC83-4D9D-A3D4-12C0CA9175BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A848D027-FC83-4D9D-A3D4-12C0CA9175BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A848D027-FC83-4D9D-A3D4-12C0CA9175BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
