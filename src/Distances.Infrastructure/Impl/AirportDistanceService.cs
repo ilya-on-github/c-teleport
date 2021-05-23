@@ -27,10 +27,13 @@ namespace Distances.Infrastructure.Impl
             var getOne = _cTeleport.GetAirportInfo(one.IataCode, ct);
             var getTwo = _cTeleport.GetAirportInfo(two.IataCode, ct);
 
-            await Task.WhenAll(getOne, getTwo);
+            var info = await Task.WhenAll(getOne, getTwo);
 
-            var lOne = new Location(getOne.Result.Location.Lat, getOne.Result.Location.Lon);
-            var lTwo = new Location(getTwo.Result.Location.Lat, getTwo.Result.Location.Lon);
+            var infoOne = info[0];
+            var infoTwo = info[1];
+
+            var lOne = new Location(infoOne.Location.Lat, infoOne.Location.Lon);
+            var lTwo = new Location(infoTwo.Location.Lat, infoTwo.Location.Lon);
 
             return _locationDistance.GetDistance(lOne, lTwo);
         }
