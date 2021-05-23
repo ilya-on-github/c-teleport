@@ -25,8 +25,7 @@ namespace Distances.Controllers
 
             return Ok(new ApiDistance
             {
-                Miles = distance.Miles,
-                Meters = distance.Meters
+                Miles = Math.Round(distance.Miles, 1, MidpointRounding.AwayFromZero),
             });
         }
     }

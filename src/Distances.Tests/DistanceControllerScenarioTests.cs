@@ -51,8 +51,7 @@ namespace Distances.Tests
             result.As<OkObjectResult>().Value.Should()
                 .BeEquivalentTo(new ApiDistance
                 {
-                    Miles = 1332.5442441166228,
-                    Meters = 2144516.7538266457
+                    Miles = 1332.5
                 });
         }
 

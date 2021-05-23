@@ -13,7 +13,6 @@ namespace Distances.Services
         }
 
         public double Miles { get; }
-        public double Meters { get; }
 
         public Distance(double miles)
         {
@@ -21,7 +20,6 @@ namespace Distances.Services
                 throw new ArgumentOutOfRangeException(nameof(miles), "Distance can't be negative.");
 
             Miles = miles;
-            Meters = miles * MileToMeterRatio;
         }
 
         protected bool Equals(Distance other)
